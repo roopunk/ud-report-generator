@@ -8,7 +8,7 @@ c.execute("""
     select 
         articles.title, 
         l.count 
-    from 
+    from
         (
             select 
                 path, 
@@ -50,7 +50,9 @@ top_authors = c.fetchall()
 c.execute("""
     select 
         error_table.date, 
-        round((cast(error_table.count*100 as decimal)/all_table.count), 2) || '%'
+        round(
+            (cast(error_table.count*100 as decimal)/all_table.count), 2) || 
+            '%'
         from 
         ( 
             select 
